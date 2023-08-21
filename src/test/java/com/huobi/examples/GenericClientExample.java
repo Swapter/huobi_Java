@@ -30,7 +30,7 @@ public class GenericClientExample {
 
     System.out.println("----------------------------------------------------");
 
-    List<String> currencyList = genericService.getCurrencys();
+    List<Currency> currencyList = genericService.getCurrencys();
     currencyList.forEach(currency -> {
       System.out.println(currency);
     });

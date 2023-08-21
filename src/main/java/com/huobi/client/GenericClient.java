@@ -6,6 +6,7 @@ import com.huobi.client.req.generic.CurrencyChainsRequest;
 import com.huobi.constant.Options;
 import com.huobi.constant.enums.ExchangeEnum;
 import com.huobi.exception.SDKException;
+import com.huobi.model.generic.Currency;
 import com.huobi.model.generic.CurrencyChain;
 import com.huobi.model.generic.MarketStatus;
 import com.huobi.model.generic.Symbol;
@@ -19,7 +20,7 @@ public interface GenericClient {
 
   List<Symbol> getSymbols();
 
-  List<String> getCurrencys();
+  List<Currency> getCurrencys();
 
   List<CurrencyChain> getCurrencyChains(CurrencyChainsRequest request);
 

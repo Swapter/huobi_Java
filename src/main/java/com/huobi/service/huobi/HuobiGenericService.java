@@ -9,6 +9,7 @@ import com.huobi.client.GenericClient;
 import com.huobi.client.req.generic.CurrencyChainsRequest;
 import com.huobi.constant.HuobiOptions;
 import com.huobi.constant.Options;
+import com.huobi.model.generic.Currency;
 import com.huobi.model.generic.CurrencyChain;
 import com.huobi.model.generic.MarketStatus;
 import com.huobi.model.generic.Symbol;
@@ -24,7 +25,7 @@ public class HuobiGenericService implements GenericClient {
 
   public static final String GET_MARKET_STATUS_PATH = "/v2/market-status";
   public static final String GET_SYMBOLS_PATH = "/v1/common/symbols";
-  public static final String GET_CURRENCY_PATH = "/v1/common/currencys";
+  public static final String GET_CURRENCY_PATH = "/v2/settings/common/currencies";
   public static final String GET_CURRENCY_CHAINS_PATH = "/v2/reference/currencies";
   public static final String GET_TIMESTAMP = "/v1/common/timestamp";
 
@@ -59,11 +60,11 @@ public class HuobiGenericService implements GenericClient {
   }
 
   @Override
-  public List<String> getCurrencys() {
+  public List<Currency> getCurrencys() {
 
     JSONObject jsonObject = restConnection.executeGet(GET_CURRENCY_PATH, UrlParamsBuilder.build());
     JSONArray data = jsonObject.getJSONArray("data");
-    return data.toJavaList(String.class);
+    return data.toJavaList(Currency.class);
 
   }
 
