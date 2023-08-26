@@ -19,8 +19,6 @@ public class CreateWithdrawRequest {
 
   private BigDecimal amount;
 
-  private BigDecimal fee;
-
   private String currency;
 
   private String chain;

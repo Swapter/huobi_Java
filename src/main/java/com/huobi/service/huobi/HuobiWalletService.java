@@ -103,14 +103,12 @@ public class HuobiWalletService implements WalletClient {
     InputChecker.checker()
         .shouldNotNull(request.getAddress(), "address")
         .shouldNotNull(request.getAmount(), "amount")
-        .shouldNotNull(request.getCurrency(), "currency")
-        .shouldNotNull(request.getFee(), "fee");
+        .shouldNotNull(request.getCurrency(), "currency");
 
     UrlParamsBuilder builder = UrlParamsBuilder.build()
         .putToPost("address", request.getAddress())
         .putToPost("amount", request.getAmount())
         .putToPost("currency", request.getCurrency())
-        .putToPost("fee", request.getFee())
         .putToPost("addr-tag", request.getAddrTag())
         .putToPost("chain", request.getChain());
 
