@@ -46,7 +46,6 @@ public class WalletClientExample {
         .addrTag(withdrawAddressTag)
         .currency("eos")
         .amount(new BigDecimal("1"))
-        .fee(new BigDecimal("0.1"))
         .build());
 
     System.out.println("-----------create withdraw : "+withdrawId+"------------------");
