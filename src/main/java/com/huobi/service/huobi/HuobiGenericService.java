@@ -6,14 +6,13 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import com.huobi.client.GenericClient;
+import com.huobi.client.req.generic.CurrencyChainsInfoRequest;
 import com.huobi.client.req.generic.CurrencyChainsRequest;
 import com.huobi.constant.HuobiOptions;
 import com.huobi.constant.Options;
-import com.huobi.model.generic.Currency;
-import com.huobi.model.generic.CurrencyChain;
-import com.huobi.model.generic.MarketStatus;
-import com.huobi.model.generic.Symbol;
+import com.huobi.model.generic.*;
 import com.huobi.service.huobi.connection.HuobiRestConnection;
+import com.huobi.service.huobi.parser.generic.ChainInfoParser;
 import com.huobi.service.huobi.parser.generic.CurrencyChainParser;
 import com.huobi.service.huobi.parser.generic.MarketStatusParser;
 import com.huobi.service.huobi.parser.generic.SymbolParser;
@@ -28,6 +27,7 @@ public class HuobiGenericService implements GenericClient {
   public static final String GET_CURRENCY_PATH = "/v2/settings/common/currencies";
   public static final String GET_CURRENCY_CHAINS_PATH = "/v2/reference/currencies";
   public static final String GET_TIMESTAMP = "/v1/common/timestamp";
+  public static final String GET_CHAINS_INFORMATION = "/v1/settings/common/chains";
 
   private Options options;
 
@@ -78,6 +78,20 @@ public class HuobiGenericService implements GenericClient {
     JSONObject jsonObject = restConnection.executeGet(GET_CURRENCY_CHAINS_PATH,builder);
     JSONArray data = jsonObject.getJSONArray("data");
     return new CurrencyChainParser().parseArray(data);
+  }
+
+
+  @Override
+  public List<ChainInfo> getChainsInformation(CurrencyChainsInfoRequest request) {
+
+    UrlParamsBuilder builder = UrlParamsBuilder.build()
+            .putToUrl("currency",request.getCurrency())
+            .putToUrl("show-desc", "1")
+            .putToUrl("authorizedUser",request.isAuthorizedUser()+"");
+
+    JSONObject jsonObject = restConnection.executeGet(GET_CHAINS_INFORMATION,builder);
+    JSONArray data = jsonObject.getJSONArray("data");
+    return new ChainInfoParser().parseArray(data);
   }
 
   @Override
