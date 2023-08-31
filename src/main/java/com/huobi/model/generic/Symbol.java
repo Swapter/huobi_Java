@@ -33,5 +33,8 @@ public class Symbol {
   @JSONField(name = "te")
   private Boolean tradeEnabled;
 
+  @JSONField(name = "tap")
+  private int amountPrecision;
+
 
 }
