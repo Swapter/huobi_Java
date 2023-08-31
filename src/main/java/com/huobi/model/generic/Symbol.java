@@ -34,7 +34,7 @@ public class Symbol {
   private Boolean tradeEnabled;
 
   @JSONField(name = "tap")
-  private int amountPrecision;
+  private Integer amountPrecision;
 
 
 }
