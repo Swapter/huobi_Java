@@ -23,7 +23,7 @@ public class HuobiGenericService implements GenericClient {
   public static final String GET_SYSTEM_STATUS_URL = "https://status.huobigroup.com/api/v2/summary.json";
 
   public static final String GET_MARKET_STATUS_PATH = "/v2/market-status";
-  public static final String GET_SYMBOLS_PATH = "/v1/common/symbols";
+  public static final String GET_SYMBOLS_PATH = "/v1/settings/common/symbols";
   public static final String GET_CURRENCY_PATH = "/v2/settings/common/currencies";
   public static final String GET_CURRENCY_CHAINS_PATH = "/v2/reference/currencies";
   public static final String GET_TIMESTAMP = "/v1/common/timestamp";
